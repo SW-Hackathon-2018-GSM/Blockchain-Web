@@ -71,7 +71,7 @@ var app = http.createServer(function(req,res) {
               'data': {
                 'method': 'transaction_end',
                 'params': {
-                  'wid': wid
+                  'wid': widR
                 }
               }
             }
