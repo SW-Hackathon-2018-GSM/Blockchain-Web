@@ -21,7 +21,7 @@ var app = http.createServer(function(req,res) {
       var optionsS = {
         'url': 'www.aws.com',
         'method': 'POST',
-        'headers': headers,
+        'headers': headersS,
         'form': {
           'jsonrpc': '2.0',
           'method': 'icx_call',
