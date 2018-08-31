@@ -14,6 +14,7 @@ var app = http.createServer(function(req,res) {
     if (pathname === '/') {
       res.end('Welcome to AD for EVERYONE v1.0 Server.');
     } else if(pathname === '/start'){
+      var widS = queryData.wid;
       var headersS = {
         'User-Agent': 'Super Agent/0.0.1',
         'Content-Type': 'application/x-www-form-unlencoded'
@@ -39,14 +40,17 @@ var app = http.createServer(function(req,res) {
           }
         }
       };
-      request(optionsS, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log(body);
-        }
-      });
+      //request(optionsS, function (error, response, body) {
+      //  if (!error && response.statusCode == 200) {
+      //    console.log(body);
+      //  }
+      //});
+
+      res.writeHead(200);
+      res.end('transaction begin');
     } else if(pathname === '/receive') {
-      var wid = queryData.wid;
-      if (wid !== undefined) {
+      var widR = queryData.wid;
+      if (widR !== undefined) {
         var headersR = {
           'User-Agent': 'Super Agent/0.0.1',
           'Content-Type': 'application/x-www-form-unlencoded'
@@ -73,14 +77,16 @@ var app = http.createServer(function(req,res) {
             }
           }
         };
-        request(optionsR, function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-            console.log(body);
-          }
-        });
+        //request(optionsR, function (error, response, body) {
+        //  if (!error && response.statusCode == 200) {
+        //    console.log(body);
+        //  }
+        //});
+        res.writeHead(200);
+        res.end('이용해주셔서 삼가 고인의 명복을 빕니다');
       } else {
         res.writeHead(403);
-        res.end('403 Forbidden.<br>No Worker ID Detected.');
+        res.end('403 Forbidden. No Worker ID Detected.');
       }
     } else {
       res.writeHead(404);
