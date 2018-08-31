@@ -47,7 +47,7 @@ var app = http.createServer(function(req,res) {
       //});
 
       res.writeHead(200);
-      res.end(optionsS);
+      res.end(widS);
     } else if(pathname === '/receive') {
       var widR = queryData.wid;
       if (widR !== undefined) {
@@ -83,7 +83,7 @@ var app = http.createServer(function(req,res) {
         //  }
         //});
         res.writeHead(200);
-        res.end(optionsR);
+        res.end(widR);
       } else {
         res.writeHead(403);
         res.end('403 Forbidden. No Worker ID Detected.');
