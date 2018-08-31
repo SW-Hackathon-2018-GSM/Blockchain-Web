@@ -79,12 +79,12 @@ var app = http.createServer(function(req,res) {
           }
         });
       } else {
-        response.writeHead(403);
-        response.end('403 Forbidden.<br>No Worker ID Detected.');
+        res.writeHead(403);
+        res.end('403 Forbidden.<br>No Worker ID Detected.');
       }
     } else {
-      response.writeHead(404);
-      response.end('404 Not Found!');
+      res.writeHead(404);
+      res.end('404 Not Found!');
     }
 
 });
