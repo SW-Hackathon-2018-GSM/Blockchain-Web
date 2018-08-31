@@ -47,7 +47,7 @@ var app = http.createServer(function(req,res) {
       //});
 
       res.writeHead(200);
-      res.end('transaction begin');
+      res.end(optionsS);
     } else if(pathname === '/receive') {
       var widR = queryData.wid;
       if (widR !== undefined) {
@@ -83,7 +83,7 @@ var app = http.createServer(function(req,res) {
         //  }
         //});
         res.writeHead(200);
-        res.end('이용해주셔서 삼가 고인의 명복을 빕니다');
+        res.end(optionsR);
       } else {
         res.writeHead(403);
         res.end('403 Forbidden. No Worker ID Detected.');
