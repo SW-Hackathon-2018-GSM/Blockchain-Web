@@ -11,16 +11,18 @@ var app = http.createServer(function(req,res) {
     var _url = req.url;
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
+    var score = '';
     if (pathname === '/') {
-      res.end('Welcome to AD for EVERYONE v1.0 Server.');
+      res.end('Welcome to AD for All v1.0 Server.');
     } else if(pathname === '/start'){
+      var sw = 0;
       var widS = queryData.wid;
       var headersS = {
         'User-Agent': 'Super Agent/0.0.1',
         'Content-Type': 'application/x-www-form-unlencoded'
       };
       var optionsS = {
-        'url': 'www.aws.com',
+        'url': 'http://ec2-13-125-236-184.ap-northeast-2.compute.amazonaws.com:9000/api/v3',
         'method': 'POST',
         'headers': headersS,
         'form': {
@@ -29,9 +31,9 @@ var app = http.createServer(function(req,res) {
           'id': '1',
           'params': {
             'version': '0x3',
-            'from': '',
-            'to': '',
-            'dataType': '',
+            'from': widS,
+            'to': score,
+            'dataType': 'call',
             'data': {
               'method': 'transaction_start',
               'params': {
@@ -45,7 +47,9 @@ var app = http.createServer(function(req,res) {
       //    console.log(body);
       //  }
       //});
+      if (!sw) {
 
+      }
       res.writeHead(200);
       res.end(widS);
     } else if(pathname === '/receive') {
@@ -56,7 +60,7 @@ var app = http.createServer(function(req,res) {
           'Content-Type': 'application/x-www-form-unlencoded'
         };
         var optionsR = {
-          'url': 'www.aws.com',
+          'url': 'http://ec2-13-125-236-184.ap-northeast-2.compute.amazonaws.com:9000/api/v3',
           'method': 'POST',
           'headers': headersR,
           'form': {
@@ -65,9 +69,9 @@ var app = http.createServer(function(req,res) {
             'id': '1',
             'params': {
               'version': '0x3',
-              'from': '',
-              'to': '',
-              'dataType': '',
+              'from': widR,
+              'to': score,
+              'dataType': 'call',
               'data': {
                 'method': 'transaction_end',
                 'params': {
