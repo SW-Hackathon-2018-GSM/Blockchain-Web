@@ -4,7 +4,6 @@ var http = require('http');
 var url = require('url');
 var qs = require('querystring');
 var express = require('express');
-var mysql = require('mysql');
 var request = require('request');
 
 var app = http.createServer(function(req,res) {
@@ -37,6 +36,7 @@ var app = http.createServer(function(req,res) {
             'data': {
               'method': 'transaction_start',
               'params': {
+                'wid': widS
               }
             }
           }
@@ -47,9 +47,6 @@ var app = http.createServer(function(req,res) {
       //    console.log(body);
       //  }
       //});
-      if (!sw) {
-
-      }
       res.writeHead(200);
       res.end(widS);
     } else if(pathname === '/receive') {
